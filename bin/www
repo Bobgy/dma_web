@@ -5,9 +5,8 @@
  */
 
 var app = require('../app');
-var debug = require('debug')('dma:server');
+var debug = require('debug')('dma_web:server');
 var http = require('http');
-var io = require('socket.io')(http);
 
 /**
  * Get port from environment and store in Express.
@@ -21,6 +20,9 @@ app.set('port', port);
  */
 
 var server = http.createServer(app);
+var io = require('socket.io')(server);
+var SocketServer = require('dma');
+var socketServer = new SocketServer(io);
 
 /**
  * Listen on provided port, on all network interfaces.
@@ -29,6 +31,7 @@ var server = http.createServer(app);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
+socketServer.listen();
 
 /**
  * Normalize a port into a number, string, or false.

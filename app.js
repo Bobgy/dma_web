@@ -22,8 +22,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/js', express.static(path.join(__dirname, './node_modules/dma/js')));
-app.use('/assets', express.static(path.join(__dirname, './node_modules/dma/assets')));
+app.use('/js', express.static(path.join(__dirname, './node_modules/danmaku.arena/js')));
+app.use('/assets', express.static(path.join(__dirname, './node_modules/danmaku.arena/assets')));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
